@@ -11,6 +11,7 @@ import { Copy, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { getUserIds } from "./actions";
+import { toast } from "sonner";
 
 export default function CreateMeetingPage() {
   const [descriptionInput, setDescriptionInput] = useState("");
@@ -61,7 +62,7 @@ export default function CreateMeetingPage() {
       setCall(call);
     } catch (error) {
       console.error(error);
-      alert("Something went wrong. Please try again later.");
+      toast.error("Something went wrong. Please try again later.");
     }
   }
 
@@ -247,7 +248,7 @@ function MeetingLink({ call }: MeetingLinkProps) {
           title="Copy invitation link"
           onClick={() => {
             navigator.clipboard.writeText(meetingLink);
-            alert("Copied to clipboard");
+            toast.info("Copied to clipboard");
           }}
         >
           <Copy />

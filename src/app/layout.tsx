@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import ClientProvider from "./ClientProvider";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,10 @@ export default function RootLayout({
         <body className={inter.className}>
           <ClientProvider>
             <Navbar />
-            <main className="mx-auto max-w-5xl px-3 py-6">{children}</main>
+            <main className="mx-auto max-w-5xl px-3 py-6">
+              <Toaster />
+              {children}
+            </main>
           </ClientProvider>
         </body>
       </html>
